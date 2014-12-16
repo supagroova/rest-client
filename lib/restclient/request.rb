@@ -203,7 +203,7 @@ module RestClient
         end
       end
       unless url_params.empty?
-        query_string = url_params.collect { |k, v| "#{k.to_s}=#{CGI::escape(v.to_s)}" }.join('&')
+        query_string = Payload::UrlEncoded.new(url_params)
         url + "?#{query_string}"
       else
         url
