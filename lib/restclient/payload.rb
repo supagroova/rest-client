@@ -140,7 +140,7 @@ module RestClient
     class UrlEncoded < Base
       def build_stream(params = nil)
         @stream = StringIO.new(flatten_params(params).collect do |entry|
-          "#{entry[0]}=#{handle_key(entry[1])}"
+          "#{handle_key(entry[0])}=#{handle_key(entry[1])}"
         end.join("&"))
         @stream.seek(0)
       end
